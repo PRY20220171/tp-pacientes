@@ -11,6 +11,4 @@ public interface AntecedentesPatologicosService {
     AntecedentesPatologicos createAntecedentesPatologicos(AntecedentesPatologicos paciente);
     AntecedentesPatologicos updateAntecedentesPatologicos(AntecedentesPatologicos paciente);
     String deleteAntecedentesPatologicos(UUID id);
-    AntecedentesPatologicos getByDni(Long dni);
-    AntecedentesPatologicos getByDocExtranjeria(Long docnum);
 }

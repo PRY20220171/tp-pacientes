@@ -64,7 +64,7 @@ public class PacienteServiceImpl implements PacienteService {
         }
         return "ELIMINADO CON EXITO";
     }
-
+/*
     @Override
     public Paciente getByDni(Long dni) {
         return pacienteRepository.findAllByDoctipoAndDocnum("DNI", dni.toString());
@@ -74,4 +74,6 @@ public class PacienteServiceImpl implements PacienteService {
     public Paciente getByDocExtranjeria(Long docnum) {
         return pacienteRepository.findAllByDoctipoAndDocnum("DOCUMENTO EXTRANJERIA", docnum.toString());
     }
+
+ */
 }

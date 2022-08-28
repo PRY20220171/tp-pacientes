@@ -11,6 +11,4 @@ public interface PacienteService {
     Paciente createPaciente(Paciente paciente);
     Paciente updatePaciente(Paciente paciente);
     String deletePaciente(UUID id);
-    Paciente getByDni(Long dni);
-    Paciente getByDocExtranjeria(Long docnum);
 }

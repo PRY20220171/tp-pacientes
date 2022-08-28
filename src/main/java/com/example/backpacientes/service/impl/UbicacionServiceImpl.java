@@ -58,15 +58,4 @@ public class UbicacionServiceImpl implements UbicacionService {
         }
         return "ELIMINADO CON EXITO";
     }
- /*
-    @Override
-    public Ubicacion getByPais(Long dni) {
-        return ubicacionRepository.findAllByDistritoAndProvincia("DNI", dni.toString());
-    }
-
-    @Override
-    public Ubicacion getByDocExtranjeria(Long provincia) {
-        return ubicacionRepository.findAllByDistritoAndProvincia("DOCUMENTO EXTRANJERIA", provincia.toString());
-    }
-    */
 }

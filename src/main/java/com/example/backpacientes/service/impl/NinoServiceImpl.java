@@ -72,5 +72,5 @@ public class NinoServiceImpl implements NinoService {
     public Nino getByDocExtranjeria(Long controlprenatal) {
         return ninoRepository.findAllByNroembarazoAndControlprenatal("DOCUMENTO EXTRANJERIA", controlprenatal.toString());
     }
-*/
+ */
 }

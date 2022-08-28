@@ -11,6 +11,4 @@ public interface NinoService {
     Nino createNino(Nino paciente);
     Nino updateNino(Nino paciente);
     String deleteNino(UUID id);
-    Nino getByDni(Long dni);
-    Nino getByDocExtranjeria(Long docnum);
 }
