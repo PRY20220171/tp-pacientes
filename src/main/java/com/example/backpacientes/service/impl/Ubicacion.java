@@ -37,17 +37,11 @@ public class UbicacionServiceImpl implements UbicacionService {
             return null;
         }
         //Actualizamos los valores del ubicacion:
-        ubicacionDB.setNombres(ubicacion.getNombres());
-        ubicacionDB.setApellidos(ubicacion.getApellidos());
-        ubicacionDB.setDocnum(ubicacion.getDocnum());
-        ubicacionDB.setDoctipo(ubicacion.getDoctipo());
-        ubicacionDB.setSexo(ubicacion.getSexo());
-        ubicacionDB.setGruposang(ubicacion.getGruposang());
-        ubicacionDB.setRh(ubicacion.getRh());
-        ubicacionDB.setTelefono(ubicacion.getTelefono());
-        ubicacionDB.setGradoinstruccion(ubicacion.getGradoinstruccion());
-        ubicacionDB.setOcupacion(ubicacion.getOcupacion());
-        ubicacionDB.setEstadocivil(ubicacion.getEstadocivil());
+        ubicacionDB.setPais(ubicacion.getPais());
+        ubicacionDB.setRegion(ubicacion.getRegion());
+        ubicacionDB.setProvincia(ubicacion.getProvincia());
+        ubicacionDB.setDistrito(ubicacion.getDistrito());
+        ubicacionDB.setDireccion(ubicacion.getDireccion());
         return ubicacionRepository.save(ubicacion);
     }
 
@@ -64,14 +58,15 @@ public class UbicacionServiceImpl implements UbicacionService {
         }
         return "ELIMINADO CON EXITO";
     }
-
+ /*
     @Override
-    public Ubicacion getByDni(Long dni) {
-        return ubicacionRepository.findAllByDoctipoAndDocnum("DNI", dni.toString());
+    public Ubicacion getByPais(Long dni) {
+        return ubicacionRepository.findAllByDistritoAndProvincia("DNI", dni.toString());
     }
 
     @Override
-    public Ubicacion getByDocExtranjeria(Long docnum) {
-        return ubicacionRepository.findAllByDoctipoAndDocnum("DOCUMENTO EXTRANJERIA", docnum.toString());
+    public Ubicacion getByDocExtranjeria(Long provincia) {
+        return ubicacionRepository.findAllByDistritoAndProvincia("DOCUMENTO EXTRANJERIA", provincia.toString());
     }
+    */
 }

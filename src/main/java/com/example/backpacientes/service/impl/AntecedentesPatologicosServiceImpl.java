@@ -37,17 +37,12 @@ public class AntecedentesPatologicosServiceImpl implements AntecedentesPatologic
             return null;
         }
         //Actualizamos los valores del antecedentespatologicos:
-        antecedentespatologicosDB.setNombres(antecedentespatologicos.getNombres());
-        antecedentespatologicosDB.setApellidos(antecedentespatologicos.getApellidos());
-        antecedentespatologicosDB.setDocnum(antecedentespatologicos.getDocnum());
-        antecedentespatologicosDB.setDoctipo(antecedentespatologicos.getDoctipo());
-        antecedentespatologicosDB.setSexo(antecedentespatologicos.getSexo());
-        antecedentespatologicosDB.setGruposang(antecedentespatologicos.getGruposang());
-        antecedentespatologicosDB.setRh(antecedentespatologicos.getRh());
-        antecedentespatologicosDB.setTelefono(antecedentespatologicos.getTelefono());
-        antecedentespatologicosDB.setGradoinstruccion(antecedentespatologicos.getGradoinstruccion());
-        antecedentespatologicosDB.setOcupacion(antecedentespatologicos.getOcupacion());
-        antecedentespatologicosDB.setEstadocivil(antecedentespatologicos.getEstadocivil());
+        antecedentespatologicosDB.setTbc(antecedentespatologicos.getTbc());
+        antecedentespatologicosDB.setSobasma(antecedentespatologicos.getSobasma());
+        antecedentespatologicosDB.setTransfsangre(antecedentespatologicos.getTransfsangre());
+        antecedentespatologicosDB.setNeurologico(antecedentespatologicos.getNeurologico());
+        antecedentespatologicosDB.setAlergiamedic(antecedentespatologicos.getAlergiamedic());
+        antecedentespatologicosDB.setOtros(antecedentespatologicos.getOtros());
         return antecedentespatologicosRepository.save(antecedentespatologicos);
     }
 
@@ -64,14 +59,15 @@ public class AntecedentesPatologicosServiceImpl implements AntecedentesPatologic
         }
         return "ELIMINADO CON EXITO";
     }
-
+/*
     @Override
     public AntecedentesPatologicos getByDni(Long dni) {
-        return antecedentespatologicosRepository.findAllByDoctipoAndDocnum("DNI", dni.toString());
+        return antecedentespatologicosRepository.findAllByNeurologicoAndTransfsangre("DNI", dni.toString());
     }
 
     @Override
-    public AntecedentesPatologicos getByDocExtranjeria(Long docnum) {
-        return antecedentespatologicosRepository.findAllByDoctipoAndDocnum("DOCUMENTO EXTRANJERIA", docnum.toString());
+    public AntecedentesPatologicos getByDocExtranjeria(Long transfsangre) {
+        return antecedentespatologicosRepository.findAllByNeurologicoAndTransfsangre("DOCUMENTO EXTRANJERIA", transfsangre.toString());
     }
+*/
 }
