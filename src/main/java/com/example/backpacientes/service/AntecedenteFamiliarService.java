@@ -11,6 +11,4 @@ public interface AntecedenteFamiliarService {
     AntecedenteFamiliar createAntecedenteFamiliar(AntecedenteFamiliar paciente);
     AntecedenteFamiliar updateAntecedenteFamiliar(AntecedenteFamiliar paciente);
     String deleteAntecedenteFamiliar(UUID id);
-    AntecedenteFamiliar getByDni(Long dni);
-    AntecedenteFamiliar getByDocExtranjeria(Long docnum);
 }

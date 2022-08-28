@@ -11,6 +11,4 @@ public interface AntecedentePerinatalService {
     AntecedentePerinatal createAntecedentePerinatal(AntecedentePerinatal paciente);
     AntecedentePerinatal updateAntecedentePerinatal(AntecedentePerinatal paciente);
     String deleteAntecedentePerinatal(UUID id);
-    AntecedentePerinatal getByDni(Long dni);
-    AntecedentePerinatal getByDocExtranjeria(Long docnum);
 }

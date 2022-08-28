@@ -37,17 +37,15 @@ public class NinoServiceImpl implements NinoService {
             return null;
         }
         //Actualizamos los valores del nino:
-        ninoDB.setNombres(nino.getNombres());
-        ninoDB.setApellidos(nino.getApellidos());
-        ninoDB.setDocnum(nino.getDocnum());
-        ninoDB.setDoctipo(nino.getDoctipo());
-        ninoDB.setSexo(nino.getSexo());
-        ninoDB.setGruposang(nino.getGruposang());
-        ninoDB.setRh(nino.getRh());
-        ninoDB.setTelefono(nino.getTelefono());
-        ninoDB.setGradoinstruccion(nino.getGradoinstruccion());
-        ninoDB.setOcupacion(nino.getOcupacion());
-        ninoDB.setEstadocivil(nino.getEstadocivil());
+        ninoDB.setTipoembarazo(nino.getTipoembarazo());
+        ninoDB.setEmbarazoriesgo(nino.getEmbarazoriesgo());
+        ninoDB.setControlprenatal(nino.getControlprenatal());
+        ninoDB.setNroembarazo(nino.getNroembarazo());
+        ninoDB.setEdadgestalnac(nino.getEdadgestalnac());
+        ninoDB.setPesoalnac(nino.getPesoalnac());
+        ninoDB.setTallaalnac(nino.getTallaalnac());
+        ninoDB.setPerimcefalico(nino.getPerimcefalico());
+        ninoDB.setRespllanto(nino.getRespllanto());
         return ninoRepository.save(nino);
     }
 
@@ -64,7 +62,7 @@ public class NinoServiceImpl implements NinoService {
         }
         return "ELIMINADO CON EXITO";
     }
-
+/*
     @Override
     public Nino getByDni(Long dni) {
         return ninoRepository.findAllByDoctipoAndDocnum("DNI", dni.toString());
@@ -74,4 +72,6 @@ public class NinoServiceImpl implements NinoService {
     public Nino getByDocExtranjeria(Long docnum) {
         return ninoRepository.findAllByDoctipoAndDocnum("DOCUMENTO EXTRANJERIA", docnum.toString());
     }
+
+ */
 }

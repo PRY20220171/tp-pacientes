@@ -11,6 +11,8 @@ public interface UbicacionService {
     Ubicacion createUbicacion(Ubicacion paciente);
     Ubicacion updateUbicacion(Ubicacion paciente);
     String deleteUbicacion(UUID id);
+    /*
     Ubicacion getByDni(Long dni);
     Ubicacion getByDocExtranjeria(Long docnum);
+     */
 }
