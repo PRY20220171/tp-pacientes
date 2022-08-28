@@ -29,35 +29,41 @@ import javax.validation.constraints.NotNull;
 @Table
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id", scope = Paciente.class)
 public class Paciente  implements Serializable {
+    
     @ApiModelProperty(value="ID del paciente", dataType="uuid", position=1)
     @Id
     @Column("idpaciente")
     @CassandraType(type = CassandraType.Name.UUID)
     @PrimaryKey
     private UUID id;
+
     @ApiModelProperty(value="Los nombres del paciente", dataType="ascii", position=2)
     @NotEmpty(message = "Los nombres no pueden ser vacios")
     @NotNull(message = "Los nombres no pueden ser nulos")
     @Column("nombres")
     @CassandraType(type = CassandraType.Name.ASCII)
     private String nombres;
+    
     @ApiModelProperty(value="Los apellidos del paciente", dataType="ascii", position=3)
     @NotEmpty(message = "Los apellidos no pueden ser vacios")
     @NotNull(message = "Los apellidos no pueden ser nulos")
     @Column("apellidos")
     @CassandraType(type = CassandraType.Name.ASCII)
+    
     private String apellidos;
     @ApiModelProperty(value="El número de identificación del paciente", dataType="ascii", position=4)
     @NotEmpty(message = "El número de identificación no puede ser vacio")
     @NotNull(message = "El número de identificación no puede ser nulo")
     @Column("docnum")
     @CassandraType(type = CassandraType.Name.ASCII)
+    
     private String docnum;
     @ApiModelProperty(value="El tipo de documento del paciente", dataType="ascii", position=5)
     @NotEmpty(message = "El tipo de documento no puede ser vacio")
     @NotNull(message = "El tipo de documento no puede ser nulo")
     @Column("doctipo")
     @CassandraType(type = CassandraType.Name.ASCII)
+    
     private String doctipo;
     @ApiModelProperty(value="El sexo del paciente", dataType="ascii", position=6)
     @NotEmpty(message = "El sexo no puede ser vacio")
@@ -73,29 +79,34 @@ public class Paciente  implements Serializable {
     @Column( "gruposang")
     @CassandraType(type = CassandraType.Name.ASCII)
     private String gruposang;
+    
     @ApiModelProperty(value="El factor rh de sangre del paciente", dataType="ascii", position=8)
     @NotEmpty(message = "El factor rh no puede ser vacio")
     @NotNull(message = "El factor rh no puede ser nulo")
     @Column("rh")
     @CassandraType(type = CassandraType.Name.ASCII)
     private String rh;
+    
     @ApiModelProperty(value="El telefono del paciente", dataType="ascii", position=9)
     @NotEmpty(message = "El telefono no puede ser vacio")
     @NotNull(message = "El telefono no puede ser nulo")
     @Column("telefono")
     @CassandraType(type = CassandraType.Name.ASCII)
+    
     private String telefono;
     @ApiModelProperty(value="El grado de instruccion del paciente", dataType="ascii", position=10)
     @NotEmpty(message = "El grado de instruccion no puede ser vacio")
     @NotNull(message = "El grado de instruccion no puede ser nulo")
     @Column("gradoinstruccion")
     @CassandraType(type = CassandraType.Name.ASCII)
+    
     private String gradoinstruccion;
     @ApiModelProperty(value="La ocupación del paciente", dataType="text", position=11)
     @NotEmpty(message = "La ocupación no puede ser vacio")
     @NotNull(message = "La ocupación no puede ser nulo")
     @Column("ocupacion")
     @CassandraType(type = CassandraType.Name.TEXT)
+    
     private String ocupacion;
     @ApiModelProperty(value="El estado civil del paciente", dataType="text", position=12)
     @NotEmpty(message = "El estado civil no puede ser vacio")
