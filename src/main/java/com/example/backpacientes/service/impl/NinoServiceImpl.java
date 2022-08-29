@@ -65,13 +65,12 @@ public class NinoServiceImpl implements NinoService {
 /*
     @Override
     public Nino getByDni(Long dni) {
-        return ninoRepository.findAllByDoctipoAndDocnum("DNI", dni.toString());
+        return ninoRepository.findAllByNroembarazoAndControlprenatal("DNI", dni.toString());
     }
 
     @Override
-    public Nino getByDocExtranjeria(Long docnum) {
-        return ninoRepository.findAllByDoctipoAndDocnum("DOCUMENTO EXTRANJERIA", docnum.toString());
+    public Nino getByDocExtranjeria(Long controlprenatal) {
+        return ninoRepository.findAllByNroembarazoAndControlprenatal("DOCUMENTO EXTRANJERIA", controlprenatal.toString());
     }
-
  */
 }

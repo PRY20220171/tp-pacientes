@@ -59,16 +59,4 @@ public class AntecedentesPatologicosServiceImpl implements AntecedentesPatologic
         }
         return "ELIMINADO CON EXITO";
     }
-    /*
-    @Override
-    public AntecedentesPatologicos getByDni(Long dni) {
-        return antecedentespatologicosRepository.findAllByDoctipoAndDocnum("DNI", dni.toString());
-    }
-
-    @Override
-    public AntecedentesPatologicos getByDocExtranjeria(Long docnum) {
-        return antecedentespatologicosRepository.findAllByDoctipoAndDocnum("DOCUMENTO EXTRANJERIA", docnum.toString());
-    }
-
-     */
 }
