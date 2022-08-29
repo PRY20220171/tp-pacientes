@@ -1,8 +1,8 @@
 package com.example.backpacientes.service.impl;
 
-import com.example.backpacientes.entity.AntecedentesPatologicos;
-import com.example.backpacientes.repository.AntecedentesPatologicosRepository;
-import com.example.backpacientes.service.AntecedentesPatologicosService;
+import com.example.backpacientes.entity.AntecedentePatologico;
+import com.example.backpacientes.repository.AntecedentePatologicoRepository;
+import com.example.backpacientes.service.AntecedentePatologicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,29 +10,29 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class AntecedentesPatologicosServiceImpl implements AntecedentesPatologicosService {
+public class AntecedentePatologicoServiceImpl implements AntecedentePatologicoService {
     @Autowired
-    private AntecedentesPatologicosRepository antecedentespatologicosRepository;
+    private AntecedentePatologicoRepository antecedentespatologicosRepository;
 
     @Override
-    public List<AntecedentesPatologicos> findAntecedentesPatologicosAll() {
-        return (List<AntecedentesPatologicos>) antecedentespatologicosRepository.findAll();
+    public List<AntecedentePatologico> findAntecedentePatologicoAll() {
+        return (List<AntecedentePatologico>) antecedentespatologicosRepository.findAll();
     }
 
     @Override
-    public AntecedentesPatologicos getAntecedentesPatologicos(UUID id) {
+    public AntecedentePatologico getAntecedentePatologico(UUID id) {
         return antecedentespatologicosRepository.findById(id).orElse(null);
     }
 
     @Override
-    public AntecedentesPatologicos createAntecedentesPatologicos(AntecedentesPatologicos antecedentespatologicos) {
+    public AntecedentePatologico createAntecedentePatologico(AntecedentePatologico antecedentespatologicos) {
         //Aquí irian las validaciones al crear el antecedentespatologicos de ser necesario
         return antecedentespatologicosRepository.save(antecedentespatologicos);
     }
 
     @Override
-    public AntecedentesPatologicos updateAntecedentesPatologicos(AntecedentesPatologicos antecedentespatologicos) {
-        AntecedentesPatologicos antecedentespatologicosDB = this.getAntecedentesPatologicos(antecedentespatologicos.getId());
+    public AntecedentePatologico updateAntecedentePatologico(AntecedentePatologico antecedentespatologicos) {
+        AntecedentePatologico antecedentespatologicosDB = this.getAntecedentePatologico(antecedentespatologicos.getId());
         if (antecedentespatologicosDB == null) {
             return null;
         }
@@ -47,8 +47,8 @@ public class AntecedentesPatologicosServiceImpl implements AntecedentesPatologic
     }
 
     @Override
-    public String deleteAntecedentesPatologicos(UUID id) {
-        AntecedentesPatologicos antecedentespatologicosDB = this.getAntecedentesPatologicos(id);
+    public String deleteAntecedentePatologico(UUID id) {
+        AntecedentePatologico antecedentespatologicosDB = this.getAntecedentePatologico(id);
         if (antecedentespatologicosDB == null) {
             return null;
         }

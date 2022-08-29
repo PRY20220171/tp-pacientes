@@ -80,12 +80,14 @@ public class AntecedentePerinatalController {
 
     @Autowired
     ProducerService rabbitMQSender;
-
+/*
     @GetMapping(value = "/test")
     public String producer() {
         rabbitMQSender.sendMsg(new AntecedentePerinatal());
         return "Message sent to the RabbitMQ JavaInUse Successfully";
     }
+
+ */
 
 
 

@@ -80,12 +80,14 @@ public class NinoController {
 
     @Autowired
     ProducerService rabbitMQSender;
-
+/*
     @GetMapping(value = "/test")
     public String producer() {
         rabbitMQSender.sendMsg(new Nino());
         return "Message sent to the RabbitMQ JavaInUse Successfully";
     }
+
+ */
 
 
 
