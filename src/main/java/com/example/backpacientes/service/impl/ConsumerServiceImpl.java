@@ -12,6 +12,7 @@ import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -28,19 +29,31 @@ public class ConsumerServiceImpl implements ConsumerService {
                     exchange = @Exchange(value = "${spring.rabbitmq.exchange}"),
                     key = "${spring.rabbitmq.routingkey}")
     )
-    public Object consumerMessage(UUID proId) throws AmqpIOException {
+    //@RabbitListener(queues = "${spring.rabbitmq.queue}")
+    //@SendTo("amq.rabbitmq.reply-to")
+    public Object consumerMessage(String proId) throws AmqpIOException {
         System.out.println("=============== Message ==================");
         System.out.println(proId);
         System.out.println("==========================================");
-        Paciente product= pacienteService.getPaciente(proId);
+        UUID pacienteId;
+        try{
+            pacienteId= UUID.fromString(proId);
+        } catch (Exception e) {
+            ObjectMapper obj = new ObjectMapper();
+            try {
+                return obj.writeValueAsString("Error: El id del paciente no es un UUID válido");
+            }catch(JsonProcessingException ex){
+                return null;
+            }
+        }
+        Paciente product= pacienteService.getPaciente(pacienteId);
         if(product==null){
             return null;
         }
         else{
             ObjectMapper obj = new ObjectMapper();
             try {
-                String pro = obj.writeValueAsString(product);
-                return pro;
+                return obj.writeValueAsString(product);
             }catch(JsonProcessingException e){
                 return null;
             }

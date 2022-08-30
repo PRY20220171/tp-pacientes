@@ -81,12 +81,13 @@ public class PacienteController {
     @Autowired
     ProducerService rabbitMQSender;
 
-    @GetMapping(value = "/test")
-    public String producer() {
-        rabbitMQSender.sendMsg(new Paciente());
-        return "Message sent to the RabbitMQ JavaInUse Successfully";
+    @GetMapping(value = "/test/{id}")
+    public ResponseEntity<Paciente> producer(@PathVariable("id") String id) {
+        Paciente paciente = rabbitMQSender.sendMsg(id);
+        if(paciente==null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(paciente);
     }
-
-
 
 }

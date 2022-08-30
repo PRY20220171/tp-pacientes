@@ -49,22 +49,22 @@ public class Paciente  implements Serializable {
     @NotNull(message = "Los apellidos no pueden ser nulos")
     @Column("apellidos")
     @CassandraType(type = CassandraType.Name.ASCII)
-    
     private String apellidos;
+
     @ApiModelProperty(value="El número de identificación del paciente", dataType="ascii", position=4)
     @NotEmpty(message = "El número de identificación no puede ser vacio")
     @NotNull(message = "El número de identificación no puede ser nulo")
     @Column("docnum")
     @CassandraType(type = CassandraType.Name.ASCII)
-    
     private String docnum;
+
     @ApiModelProperty(value="El tipo de documento del paciente", dataType="ascii", position=5)
     @NotEmpty(message = "El tipo de documento no puede ser vacio")
     @NotNull(message = "El tipo de documento no puede ser nulo")
     @Column("doctipo")
     @CassandraType(type = CassandraType.Name.ASCII)
-    
     private String doctipo;
+
     @ApiModelProperty(value="El sexo del paciente", dataType="ascii", position=6)
     @NotEmpty(message = "El sexo no puede ser vacio")
     @NotNull(message = "El sexo no puede ser nulo")
