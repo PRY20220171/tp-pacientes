@@ -14,5 +14,5 @@ create table paciente
     telefono         ascii
 );
 
-INSERT INTO pacientes.paciente (id, apellidos, docnum, doctipo, estadocivil, gradoinstruccion, gruposang, nombres, ocupacion, rh, sexo, telefono)
-VALUES (0155c660-281b-11ed-9fef-3935c9454cdd, 'apellidoprueba', '78945632', 'dni', 'estado civil de prueba', 'instruccion de prueba', 'ab', 'nombreprueba', 'ocupacion de prueba', '+', 'm', '1231231');
+--INSERT INTO pacientes.paciente (id, apellidos, docnum, doctipo, estadocivil, gradoinstruccion, gruposang, nombres, ocupacion, rh, sexo, telefono)
+--VALUES (0155c660-281b-11ed-9fef-3935c9454cdd, 'apellidoprueba', '78945632', 'dni', 'estado civil de prueba', 'instruccion de prueba', 'ab', 'nombreprueba', 'ocupacion de prueba', '+', 'm', '1231231');
