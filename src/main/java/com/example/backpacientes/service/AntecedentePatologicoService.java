@@ -8,7 +8,7 @@ import java.util.UUID;
 public interface AntecedentesPatologicosService {
     List<AntecedentesPatologicos> findAntecedentesPatologicosAll();
     AntecedentesPatologicos getAntecedentesPatologicos(UUID id);
-    AntecedentesPatologicos createAntecedentesPatologicos(AntecedentesPatologicos paciente);
-    AntecedentesPatologicos updateAntecedentesPatologicos(AntecedentesPatologicos paciente);
+    AntecedentesPatologicos createAntecedentesPatologicos(AntecedentesPatologicos antecedentesPatologicos);
+    AntecedentesPatologicos updateAntecedentesPatologicos(AntecedentesPatologicos antecedentesPatologicos);
     String deleteAntecedentesPatologicos(UUID id);
 }
