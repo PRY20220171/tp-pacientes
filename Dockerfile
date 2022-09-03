@@ -2,7 +2,7 @@ FROM maven:3.6.3-openjdk-8-slim AS builder
 WORKDIR /opt/app
 COPY . .
 RUN mvn -e clean verify
-FROM openjdk:8-jre-alpine
+FROM openjdk:18-slim
 WORKDIR /opt/app
 COPY --from=builder /opt/app/target/*.jar ./
 ENV ENVIRONMENT=$ENVIRONMENT
