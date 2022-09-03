@@ -2,7 +2,7 @@ package com.example.backpacientes.controller;
 
 import com.datastax.oss.driver.api.core.uuid.Uuids;
 import com.example.backpacientes.entity.AntecedentePatologico;
-import com.example.backpacientes.service.AntecedenteSpatologicOservice;
+import com.example.backpacientes.service.AntecedentePatologicoService;
 import com.example.backpacientes.service.ProducerService;
 import com.example.backpacientes.util.ErrorMessage;
 import com.example.backpacientes.util.Message;
@@ -80,12 +80,14 @@ public class AntecedentePatologicoController {
 
     @Autowired
     ProducerService rabbitMQSender;
-
+    /*
     @GetMapping(value = "/test")
     public String producer() {
         rabbitMQSender.sendMsg(new AntecedentePatologico());
         return "Message sent to the RabbitMQ JavaInUse Successfully";
     }
+
+     */
 
 
 

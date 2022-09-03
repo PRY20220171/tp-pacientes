@@ -80,12 +80,14 @@ public class UbicacionController {
 
     @Autowired
     ProducerService rabbitMQSender;
-
+/*
     @GetMapping(value = "/test")
     public String producer() {
         rabbitMQSender.sendMsg(new Ubicacion());
         return "Message sent to the RabbitMQ JavaInUse Successfully";
     }
+
+ */
 
 
 

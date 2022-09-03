@@ -5,5 +5,5 @@ import com.example.backpacientes.entity.Paciente;
 import java.util.UUID;
 
 public interface ConsumerService {
-    Object consumerMessage(UUID proId) throws Exception;
+    Object consumerMessage(String proId) throws Exception;
 }
