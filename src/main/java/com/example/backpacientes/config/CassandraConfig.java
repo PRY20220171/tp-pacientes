@@ -41,7 +41,7 @@ import java.util.Objects;
 
 @Configuration
 @EnableCassandraRepositories(basePackages = {"com.example.backpacientes.repository"})
-@ConditionalOnMissingBean(type = "org.springframework.boot.test.mock.mockito.MockitoPostProcessor")
+@Profile("!test")
 public class CassandraConfig {
     @Autowired
     private Environment env;

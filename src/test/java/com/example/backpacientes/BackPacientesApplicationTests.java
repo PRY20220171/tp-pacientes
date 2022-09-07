@@ -1,44 +1,65 @@
 package com.example.backpacientes;
 
-import com.datastax.oss.driver.api.core.CqlSession;
 import com.example.backpacientes.config.CassandraConfig;
-import com.example.backpacientes.config.CassandraTestConfig;
-import com.example.backpacientes.config.RabbitMqTestConfig;
-import org.cassandraunit.CQLDataLoader;
-import org.cassandraunit.dataset.cql.ClassPathCQLDataSet;
-import org.cassandraunit.spring.CassandraUnit;
-import org.cassandraunit.spring.CassandraUnitTestExecutionListener;
-import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
+import com.example.backpacientes.entity.Paciente;
+import com.example.backpacientes.repository.PacienteRepository;
+import com.example.backpacientes.service.PacienteService;
+import com.example.backpacientes.service.impl.PacienteServiceImpl;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
+
 
 import java.util.UUID;
 
-import static org.junit.Assert.assertEquals;
-import static org.springframework.test.context.TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration
+@SpringBootTest
+@ContextConfiguration(classes = {CassandraConfig.class})
 
+public class BackPacientesApplicationTests {
+    @Mock
+    private PacienteRepository pacienteRepository;
+    @InjectMocks
+    private PacienteService pacienteService = new PacienteServiceImpl();
+    Paciente pacienteprueba = new Paciente();
+    @Before
+    public void setUp(){
 
-//@SpringBootTest(classes = {CassandraTestConfig.class, RabbitMqTestConfig.class})
-@TestExecutionListeners(
-        listeners = CassandraUnitTestExecutionListener.class,
-        mergeMode = MERGE_WITH_DEFAULTS
-)
-@CassandraUnit
-class BackPacientesApplicationTests {
+        pacienteprueba.setId(UUID.randomUUID());
+        pacienteprueba.setNombres("Alexis Enrique");
+        pacienteprueba.setApellidos("Barrios Perez");
+        pacienteprueba.setDocnum("12345678");
+        pacienteprueba.setDoctipo("dni");
+        pacienteprueba.setSexo("masculino");
+        pacienteprueba.setGruposang("AB");
+        pacienteprueba.setRh("+");
+        pacienteprueba.setTelefono("123456789");
+        pacienteprueba.setGradoinstruccion("universitario");
+        pacienteprueba.setEstadocivil("soltero");
+        //when(pacienteRepository.save(null)).thenReturn(null);
+        when(pacienteRepository.save(any(Paciente.class))).thenAnswer(i -> i.getArguments()[0]);
+    }
     @Test
-    void contextLoads() {
-        System.out.println("this is a test");
-        System.out.println("This is another test");
-        assertEquals(1,1);
+    public void contextLoads() throws Exception{
+        String methodName = new Object() {}
+                .getClass()
+                .getEnclosingMethod()
+                .getName();
+        Paciente aux = pacienteService.createPaciente(null);
+        Assertions.assertNull(aux);
+        aux = pacienteService.createPaciente(pacienteprueba);
+        System.out.println(pacienteprueba.getId());
+        System.out.println(aux);
+        AssertUtil.assertNotNull(methodName + " - NULL TEST",aux);
     }
 
 }

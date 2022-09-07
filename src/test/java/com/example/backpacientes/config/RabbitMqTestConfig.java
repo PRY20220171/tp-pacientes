@@ -17,11 +17,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.rabbitmq.client.Channel;
+import org.springframework.context.annotation.Profile;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.io.IOException;
 
 @EnableRabbit
 @Configuration
+@Profile("test")
 public class RabbitMqTestConfig {
 
     @Bean
