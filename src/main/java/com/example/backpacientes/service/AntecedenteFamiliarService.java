@@ -1,6 +1,6 @@
-package com.example.backantecedentefamiliars.service;
+package com.example.backpacientes.service;
 
-import com.example.backantecedentefamiliars.entity.AntecedenteFamiliar;
+import com.example.backpacientes.entity.AntecedenteFamiliar;
 
 import java.util.List;
 import java.util.UUID;
