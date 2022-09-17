@@ -78,9 +78,9 @@ public class AntecedenteFamiliarController {
         return ResponseEntity.ok(antecedentefamiliarDelete);
     }
 
+    /*
     @Autowired
     ProducerService rabbitMQSender;
-    /*
     @GetMapping(value = "/test")
     public String producer() {
         rabbitMQSender.sendMsg(new AntecedenteFamiliar());

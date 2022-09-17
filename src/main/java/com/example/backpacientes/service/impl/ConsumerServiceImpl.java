@@ -31,13 +31,13 @@ public class ConsumerServiceImpl implements ConsumerService {
     )
     //@RabbitListener(queues = "${spring.rabbitmq.queue}")
     //@SendTo("amq.rabbitmq.reply-to")
-    public Object consumerMessage(String proId) throws AmqpIOException {
+    public Object consumerMessage(String objId) throws AmqpIOException {
         System.out.println("=============== Message ==================");
-        System.out.println(proId);
+        System.out.println(objId);
         System.out.println("==========================================");
         UUID pacienteId;
         try{
-            pacienteId= UUID.fromString(proId);
+            pacienteId= UUID.fromString(objId);
         } catch (Exception e) {
             ObjectMapper obj = new ObjectMapper();
             try {

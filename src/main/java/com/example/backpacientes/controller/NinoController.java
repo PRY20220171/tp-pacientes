@@ -78,9 +78,9 @@ public class NinoController {
         return ResponseEntity.ok(ninoDelete);
     }
 
+/*
     @Autowired
     ProducerService rabbitMQSender;
-/*
     @GetMapping(value = "/test")
     public String producer() {
         rabbitMQSender.sendMsg(new Nino());

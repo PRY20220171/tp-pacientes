@@ -78,9 +78,9 @@ public class AntecedentePatologicoController {
         return ResponseEntity.ok(antecedentepatologicoDelete);
     }
 
+    /*
     @Autowired
     ProducerService rabbitMQSender;
-    /*
     @GetMapping(value = "/test")
     public String producer() {
         rabbitMQSender.sendMsg(new AntecedentePatologico());

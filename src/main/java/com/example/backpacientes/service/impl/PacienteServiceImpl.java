@@ -1,7 +1,7 @@
 package com.example.backpacientes.service.impl;
 
 import com.example.backpacientes.entity.Paciente;
-import com.example.backpacientes.repository.PacienteRepository;
+import com.example.backpacientes.repository.*;
 import com.example.backpacientes.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,16 @@ import java.util.UUID;
 public class PacienteServiceImpl implements PacienteService {
     @Autowired
     private PacienteRepository pacienteRepository;
-
+    @Autowired
+    private UbicacionRepository ubicacionRepository;
+    @Autowired
+    private NinoRepository ninoRepository;
+    @Autowired
+    private AntecedentePatologicoRepository antecedentePatologicoRepository;
+    @Autowired
+    private AntecedenteFamiliarRepository antecedenteFamiliarRepository;
+    @Autowired
+    private AntecedentePerinatalRepository antecedentePerinatalRepository;
     @Override
     public List<Paciente> findPacienteAll() {
         return (List<Paciente>) pacienteRepository.findAll();
@@ -21,12 +30,26 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     public Paciente getPaciente(UUID id) {
-        return pacienteRepository.findById(id).orElse(null);
+        Paciente paciente = pacienteRepository.findById(id).orElse(null);
+        if (paciente != null){
+            paciente.setLugarnac(ubicacionRepository.findById(paciente.getIdlugarnac()).orElse(null));
+            paciente.setNino(ninoRepository.findById(paciente.getIdnino()).orElse(null));
+            paciente.setAntecedentepato(antecedentePatologicoRepository.findById(paciente.getIdantecedentepato()).orElse(null));
+            paciente.setAntecedentefam(antecedenteFamiliarRepository.findById(paciente.getIdantecedentefam()).orElse(null));
+            paciente.setAntecedenteperi(antecedentePerinatalRepository.findById(paciente.getIdantecedenteperi()).orElse(null));
+        }
+        return paciente;
     }
 
     @Override
     public Paciente createPaciente(Paciente paciente) {
         //Aquí irian las validaciones al crear el paciente de ser necesario
+        paciente.setIdlugarnac(ubicacionRepository.save(paciente.getLugarnac()).getId());
+        paciente.setIddomicilioact(ubicacionRepository.save(paciente.getDomicilioact()).getId());
+        paciente.setIdnino(ninoRepository.save(paciente.getNino()).getId());
+        paciente.setIdantecedentepato(antecedentePatologicoRepository.save(paciente.getAntecedentepato()).getId());
+        paciente.setIdantecedentefam(antecedenteFamiliarRepository.save(paciente.getAntecedentefam()).getId());
+        paciente.setIdantecedenteperi(antecedentePerinatalRepository.save(paciente.getAntecedenteperi()).getId());
         return pacienteRepository.save(paciente);
     }
 

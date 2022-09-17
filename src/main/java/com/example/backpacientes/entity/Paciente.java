@@ -4,11 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.cassandra.core.mapping.CassandraType;
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
@@ -27,7 +25,9 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Builder
 @Table
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id", scope = Paciente.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id", scope = Paciente.class)
+@Getter
+@Setter
 public class Paciente  implements Serializable {
     
     @ApiModelProperty(value="ID del paciente", dataType="uuid", position=1)
@@ -92,22 +92,22 @@ public class Paciente  implements Serializable {
     @NotNull(message = "El telefono no puede ser nulo")
     @Column("telefono")
     @CassandraType(type = CassandraType.Name.ASCII)
-    
     private String telefono;
+
     @ApiModelProperty(value="El grado de instruccion del paciente", dataType="ascii", position=10)
     @NotEmpty(message = "El grado de instruccion no puede ser vacio")
     @NotNull(message = "El grado de instruccion no puede ser nulo")
     @Column("gradoinstruccion")
     @CassandraType(type = CassandraType.Name.ASCII)
-    
     private String gradoinstruccion;
+
     @ApiModelProperty(value="La ocupación del paciente", dataType="text", position=11)
     @NotEmpty(message = "La ocupación no puede ser vacio")
     @NotNull(message = "La ocupación no puede ser nulo")
     @Column("ocupacion")
     @CassandraType(type = CassandraType.Name.TEXT)
-    
     private String ocupacion;
+
     @ApiModelProperty(value="El estado civil del paciente", dataType="text", position=12)
     @NotEmpty(message = "El estado civil no puede ser vacio")
     @NotNull(message = "No estado civil no puede ser nulo")
@@ -115,13 +115,58 @@ public class Paciente  implements Serializable {
     @CassandraType(type = CassandraType.Name.TEXT)
     private String estadocivil;
 
-    //private Long lugarnac;
-    //private Long domicilioact;
-    //private Long idnino;
-    //private Long idadultomayor;
-    //private Long idantecedenteperi;
-    //private Long idantecedentefam;
-    //private Long idantecedentepato;
-    //private Long idubicacion;
+    @ApiModelProperty(value="ID del lugar de nacimiento del paciente", dataType="uuid", position=13)
+    @Column("idlugarnac")
+    @CassandraType(type = CassandraType.Name.UUID)
+    private UUID idlugarnac;
+    @Transient
+    private Ubicacion lugarnac;
+
+    @ApiModelProperty(value="ID del domicilio del paciente", dataType="uuid", position=14)
+    @Column("iddomicilioact")
+    @CassandraType(type = CassandraType.Name.UUID)
+    private UUID iddomicilioact;
+    @Transient
+    private Ubicacion domicilioact;
+
+    @ApiModelProperty(value="ID del lugar de nacimiento del paciente", dataType="uuid", position=15)
+    @Column("idnino")
+    @CassandraType(type = CassandraType.Name.UUID)
+    private UUID idnino;
+    @Transient
+    private Nino nino;
+
+    //@ApiModelProperty(value="ID del lugar de nacimiento del paciente", dataType="uuid", position=16)
+    //@Column("idadultomayor")
+    //@CassandraType(type = CassandraType.Name.UUID)
+    //private UUID idadultomayor;
+    //private AdultoMayor adultomayor; //TODO: TBD
+
+    @ApiModelProperty(value="ID del lugar de nacimiento del paciente", dataType="uuid", position=17)
+    @Column("idantecedenteperi")
+    @CassandraType(type = CassandraType.Name.UUID)
+    private UUID idantecedenteperi;
+    @Transient
+    private AntecedentePerinatal antecedenteperi;
+
+    @ApiModelProperty(value="ID del lugar de nacimiento del paciente", dataType="uuid", position=18)
+    @Column("idantecedentefam")
+    @CassandraType(type = CassandraType.Name.UUID)
+    private UUID idantecedentefam;
+    @Transient
+    private AntecedenteFamiliar antecedentefam;
+
+    @ApiModelProperty(value="ID del lugar de nacimiento del paciente", dataType="uuid", position=19)
+    @Column("idantecedentepato")
+    @CassandraType(type = CassandraType.Name.UUID)
+    private UUID idantecedentepato;
+    @Transient
+    private AntecedentePatologico antecedentepato;
+
+    //@ApiModelProperty(value="ID del lugar de nacimiento del paciente", dataType="uuid", position=20)
+    //@Column("idubicacion")
+    //@CassandraType(type = CassandraType.Name.UUID)
+    //private UUID idubicacion;
+    //private Ubicacion ubicacion;
 
 }

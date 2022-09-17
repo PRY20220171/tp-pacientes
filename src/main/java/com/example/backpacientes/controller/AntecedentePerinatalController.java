@@ -78,9 +78,9 @@ public class AntecedentePerinatalController {
         return ResponseEntity.ok(antecedenteperinatalDelete);
     }
 
+/*
     @Autowired
     ProducerService rabbitMQSender;
-/*
     @GetMapping(value = "/test")
     public String producer() {
         rabbitMQSender.sendMsg(new AntecedentePerinatal());
