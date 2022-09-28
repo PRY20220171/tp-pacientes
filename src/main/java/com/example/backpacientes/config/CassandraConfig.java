@@ -39,7 +39,7 @@ public class CassandraConfig {
         List<String> contactPoints = Collections.singletonList(Objects.requireNonNull(env.getProperty("spring.data.cassandra.contact-points")));
         System.out.println(contactPoints);
         DriverConfigLoader loader;
-        boolean ssl = Objects.equals(env.getProperty("cassandra.ssl"), "true") ;
+        boolean ssl = Objects.equals(env.getProperty("spring.data.cassandra.ssl"), "true") ;
         if(!ssl) {
             loader = DriverConfigLoader.programmaticBuilder()
                     .withStringList(DefaultDriverOption.CONTACT_POINTS, contactPoints)
