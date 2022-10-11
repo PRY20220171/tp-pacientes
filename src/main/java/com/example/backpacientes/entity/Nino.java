@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.mapping.CassandraType;
 import org.springframework.data.cassandra.core.mapping.Column;
@@ -60,35 +61,32 @@ public class Nino  implements Serializable {
     private String controlprenatal;
 
     @ApiModelProperty(value="Es el numero de embarazo en el que nacio el paciente", dataType="smallint", example="1", position=5)
-    @NotEmpty(message = "El numero de embarazo no puede ser vacio")
+    @Range(min = 1, message = "El numero de embarazo debe ser mayor que 0")
     @NotNull(message = "El numero de embarazo no puede ser nulo")
     @Column("nroembarazo")
     @CassandraType(type = CassandraType.Name.SMALLINT)
     private Integer nroembarazo;
 
     @ApiModelProperty(value="Es la edad de gestacion en la que nacio el paciente (meses)", dataType="smallint", example="9", position=6)
-    @NotEmpty(message = "La edad de gestacion no puede ser vacio")
+    @Range(min = 0, message = "La edad de gestacion no puede ser negativo")
     @NotNull(message = "La edad de gestacion no puede ser nulo")
     @Column("edadgestalnac")
     @CassandraType(type = CassandraType.Name.SMALLINT)
     private Integer edadgestalnac;
 
     @ApiModelProperty(value="Es peso del paciente al nacer", dataType="decimal", position=7)
-    @NotEmpty(message = "El peso al nacer no puede ser vacio")
     @NotNull(message = "El peso al nacer no puede ser nulo")
     @Column( "pesoalnac")
     @CassandraType(type = CassandraType.Name.DECIMAL)
     private Float pesoalnac;
 
     @ApiModelProperty(value="Es la talla del paciente al nacer", dataType="decimal", position=8)
-    @NotEmpty(message = "La talla al nacer no puede ser vacio")
     @NotNull(message = "La talla al nacer no puede ser nulo")
     @Column("tallaalnac")
     @CassandraType(type = CassandraType.Name.DECIMAL)
     private Float tallaalnac;
 
     @ApiModelProperty(value="Es el perimetro cefalico del paciente al nacer", dataType="decimal", position=9)
-    @NotEmpty(message = "El perimetro cefalico al nacer no puede ser vacio")
     @NotNull(message = "El perimetro cefalico al nacer no puede ser nulo")
     @Column("perimcefalico")
     @CassandraType(type = CassandraType.Name.ASCII)
