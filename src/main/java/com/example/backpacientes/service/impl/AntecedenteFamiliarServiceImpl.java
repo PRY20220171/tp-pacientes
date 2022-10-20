@@ -43,8 +43,8 @@ public class AntecedenteFamiliarServiceImpl implements AntecedenteFamiliarServic
         antecedentefamiliarDB.setEpilepsia(antecedentefamiliar.getEpilepsia());
         antecedentefamiliarDB.setAlergiamedic(antecedentefamiliar.getAlergiamedic());
         antecedentefamiliarDB.setViolenciafam(antecedentefamiliar.getViolenciafam());
-        antecedentefamiliarDB.setAlcoholismo(antecedentefamiliar.getAlcoholismo());
-        antecedentefamiliarDB.setDrogradiccion(antecedentefamiliar.getDrogradiccion());
+        //antecedentefamiliarDB.setAlcoholismo(antecedentefamiliar.getAlcoholismo());
+        antecedentefamiliarDB.setDrogadiccion(antecedentefamiliar.getDrogadiccion());
         antecedentefamiliarDB.setHepatitisb(antecedentefamiliar.getHepatitisb());
         return antecedentefamiliarRepository.save(antecedentefamiliar);
     }
