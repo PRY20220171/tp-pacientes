@@ -37,10 +37,22 @@ public class AntecedentePerinatalServiceImpl implements AntecedentePerinatalServ
             return null;
         }
         //Actualizamos los valores del antecedenteperinatal:
-        antecedenteperinatalDB.setApoyofam(antecedenteperinatal.getApoyofam());
+
+        /*antecedenteperinatalDB.setApoyofam(antecedenteperinatal.getApoyofam());
         antecedenteperinatalDB.setEdadgestante(antecedenteperinatal.getEdadgestante());
         antecedenteperinatalDB.setNrohijos(antecedenteperinatal.getNrohijos());
-        antecedenteperinatalDB.setEmbarazoespac(antecedenteperinatal.getEmbarazoespac());
+        antecedenteperinatalDB.setEmbarazoespac(antecedenteperinatal.getEmbarazoespac());*/
+
+        antecedenteperinatalDB.setTipoembarazo(antecedenteperinatal.getTipoembarazo());
+        antecedenteperinatalDB.setEmbarazoriesgo(antecedenteperinatal.getEmbarazoriesgo());
+        antecedenteperinatalDB.setControlprenatal(antecedenteperinatal.getControlprenatal());
+        antecedenteperinatalDB.setNroembarazo(antecedenteperinatal.getNroembarazo());
+        antecedenteperinatalDB.setEdadgestalnac(antecedenteperinatal.getEdadgestalnac());
+        antecedenteperinatalDB.setPesoalnac(antecedenteperinatal.getPesoalnac());
+        antecedenteperinatalDB.setTallaalnac(antecedenteperinatal.getTallaalnac());
+        antecedenteperinatalDB.setPerimcefalico(antecedenteperinatal.getPerimcefalico());
+        antecedenteperinatalDB.setRespllanto(antecedenteperinatal.getRespllanto());
+
         return antecedenteperinatalRepository.save(antecedenteperinatal);
     }
 
@@ -50,9 +62,9 @@ public class AntecedentePerinatalServiceImpl implements AntecedentePerinatalServ
         if (antecedenteperinatalDB == null) {
             return null;
         }
-        try{
+        try {
             antecedenteperinatalRepository.delete(antecedenteperinatalDB);
-        }catch (Exception e){
+        } catch (Exception e) {
             return "ERROR INTERNO";
         }
         return "ELIMINADO CON EXITO";
