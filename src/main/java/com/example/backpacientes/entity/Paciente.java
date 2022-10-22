@@ -136,12 +136,12 @@ public class Paciente implements Serializable {
     @Transient
     private Ubicacion domicilioact;
 
-    @ApiModelProperty(value = "ID del lugar de nacimiento del paciente", dataType = "uuid", position = 16)
-    @Column("idnino")
-    @CassandraType(type = CassandraType.Name.UUID)
-    private UUID idnino;
-    @Transient
-    private Nino nino;
+    //@ApiModelProperty(value = "ID del lugar de nacimiento del paciente", dataType = "uuid", position = 16)
+    //@Column("idnino")
+    //@CassandraType(type = CassandraType.Name.UUID)
+    //private UUID idnino;
+    //@Transient
+    //private Nino nino;
 
     //@ApiModelProperty(value="ID del lugar de nacimiento del paciente", dataType="uuid", position=16)
     //@Column("idadultomayor")

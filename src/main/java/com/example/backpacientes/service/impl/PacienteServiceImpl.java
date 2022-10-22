@@ -1,5 +1,6 @@
 package com.example.backpacientes.service.impl;
 
+import com.example.backpacientes.entity.AntecedentePsicologico;
 import com.example.backpacientes.entity.Paciente;
 import com.example.backpacientes.repository.*;
 import com.example.backpacientes.service.PacienteService;
@@ -15,8 +16,10 @@ public class PacienteServiceImpl implements PacienteService {
     private PacienteRepository pacienteRepository;
     @Autowired
     private UbicacionRepository ubicacionRepository;
+    //@Autowired
+    //private NinoRepository ninoRepository;
     @Autowired
-    private NinoRepository ninoRepository;
+    private AntecedentePsicologicoRepository antecedentePsicologicoRepository;
     @Autowired
     private AntecedentePatologicoRepository antecedentePatologicoRepository;
     @Autowired
@@ -33,10 +36,12 @@ public class PacienteServiceImpl implements PacienteService {
         Paciente paciente = pacienteRepository.findById(id).orElse(null);
         if (paciente != null){
             paciente.setLugarnac(ubicacionRepository.findById(paciente.getIdlugarnac()).orElse(null));
-            paciente.setNino(ninoRepository.findById(paciente.getIdnino()).orElse(null));
-            paciente.setAntecedentepato(antecedentePatologicoRepository.findById(paciente.getIdantecedentepato()).orElse(null));
-            paciente.setAntecedentefam(antecedenteFamiliarRepository.findById(paciente.getIdantecedentefam()).orElse(null));
+            paciente.setDomicilioact(ubicacionRepository.findById(paciente.getIddomicilioact()).orElse(null));
+            //paciente.setNino(ninoRepository.findById(paciente.getIdnino()).orElse(null));
             paciente.setAntecedenteperi(antecedentePerinatalRepository.findById(paciente.getIdantecedenteperi()).orElse(null));
+            paciente.setAntecedentepsico(antecedentePsicologicoRepository.findById(paciente.getIdantecedentepsico()).orElse(null));
+            paciente.setAntecedentefam(antecedenteFamiliarRepository.findById(paciente.getIdantecedentefam()).orElse(null));
+            paciente.setAntecedentepato(antecedentePatologicoRepository.findById(paciente.getIdantecedentepato()).orElse(null));
         }
         return paciente;
     }
@@ -46,10 +51,11 @@ public class PacienteServiceImpl implements PacienteService {
         //Aquí irian las validaciones al crear el paciente de ser necesario
         paciente.setIdlugarnac(ubicacionRepository.save(paciente.getLugarnac()).getId());
         paciente.setIddomicilioact(ubicacionRepository.save(paciente.getDomicilioact()).getId());
-        paciente.setIdnino(ninoRepository.save(paciente.getNino()).getId());
-        paciente.setIdantecedentepato(antecedentePatologicoRepository.save(paciente.getAntecedentepato()).getId());
-        paciente.setIdantecedentefam(antecedenteFamiliarRepository.save(paciente.getAntecedentefam()).getId());
+        //paciente.setIdnino(ninoRepository.save(paciente.getNino()).getId());
         paciente.setIdantecedenteperi(antecedentePerinatalRepository.save(paciente.getAntecedenteperi()).getId());
+        paciente.setIdantecedentepsico(antecedentePsicologicoRepository.save(paciente.getAntecedentepsico()).getId());
+        paciente.setIdantecedentefam(antecedenteFamiliarRepository.save(paciente.getAntecedentefam()).getId());
+        paciente.setIdantecedentepato(antecedentePatologicoRepository.save(paciente.getAntecedentepato()).getId());
         return pacienteRepository.save(paciente);
     }
 
