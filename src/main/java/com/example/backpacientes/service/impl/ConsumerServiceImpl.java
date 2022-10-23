@@ -46,13 +46,19 @@ public class ConsumerServiceImpl implements ConsumerService {
                 return null;
             }
         }
+        //System.out.println("UUID VALIDATED");
+        //System.out.println(pacienteId);
         Paciente product= pacienteService.getPaciente(pacienteId);
+        //System.out.println("PACIENTE OBTENIDO");
         if(product==null){
+            System.out.println("No existe el paciente");
             return null;
         }
         else{
+            System.out.println("Existe el paciente");
             ObjectMapper obj = new ObjectMapper();
             try {
+                //return product;
                 return obj.writeValueAsString(product);
             }catch(JsonProcessingException e){
                 return null;

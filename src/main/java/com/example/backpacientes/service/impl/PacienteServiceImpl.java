@@ -33,15 +33,24 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     public Paciente getPaciente(UUID id) {
+        System.out.println("PacienteService: getPaciente");
+        System.out.println(id);
         Paciente paciente = pacienteRepository.findById(id).orElse(null);
+        System.out.println("Obtenido paciente");
         if (paciente != null){
-            paciente.setLugarnac(ubicacionRepository.findById(paciente.getIdlugarnac()).orElse(null));
-            paciente.setDomicilioact(ubicacionRepository.findById(paciente.getIddomicilioact()).orElse(null));
+            if (paciente.getIdlugarnac()!=null)
+                paciente.setLugarnac(ubicacionRepository.findById(paciente.getIdlugarnac()).orElse(null));
+            if (paciente.getIddomicilioact()!=null)
+                paciente.setDomicilioact(ubicacionRepository.findById(paciente.getIddomicilioact()).orElse(null));
             //paciente.setNino(ninoRepository.findById(paciente.getIdnino()).orElse(null));
-            paciente.setAntecedenteperi(antecedentePerinatalRepository.findById(paciente.getIdantecedenteperi()).orElse(null));
-            paciente.setAntecedentepsico(antecedentePsicologicoRepository.findById(paciente.getIdantecedentepsico()).orElse(null));
-            paciente.setAntecedentefam(antecedenteFamiliarRepository.findById(paciente.getIdantecedentefam()).orElse(null));
-            paciente.setAntecedentepato(antecedentePatologicoRepository.findById(paciente.getIdantecedentepato()).orElse(null));
+            if (paciente.getIdantecedenteperi()!=null)
+                paciente.setAntecedenteperi(antecedentePerinatalRepository.findById(paciente.getIdantecedenteperi()).orElse(null));
+            if (paciente.getIdantecedentepsico()!=null)
+                paciente.setAntecedentepsico(antecedentePsicologicoRepository.findById(paciente.getIdantecedentepsico()).orElse(null));
+            if (paciente.getIdantecedentefam()!=null)
+                paciente.setAntecedentefam(antecedenteFamiliarRepository.findById(paciente.getIdantecedentefam()).orElse(null));
+            if (paciente.getIdantecedentepato()!=null)
+                paciente.setAntecedentepato(antecedentePatologicoRepository.findById(paciente.getIdantecedentepato()).orElse(null));
         }
         return paciente;
     }
