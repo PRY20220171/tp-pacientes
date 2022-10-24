@@ -59,14 +59,15 @@ public class ConsumerServiceImpl implements ConsumerService {
             return null;
         } else {
             System.out.println("Existe el paciente");
+            System.out.println(product.toString());
 
             ObjectMapper obj = JsonMapper.builder()
                     .addModule(new JavaTimeModule())
                     .build();
 
             try {
-                //return product;
-                return obj.writeValueAsString(product);
+                //System.out.println(obj.writeValueAsString(product).replaceAll("^\\{\\Xid\\X:\\d+,", "{"));
+                return obj.writeValueAsString(product).replaceAll("^\\{\\Xid\\X:\\d+,", "{"); //test
             } catch (JsonProcessingException e) {
                 System.out.println(e.toString());
                 return null;
