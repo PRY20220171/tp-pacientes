@@ -28,14 +28,16 @@ public class ProducerServiceImpl implements ProducerService {
     public Paciente sendMsg(String idPaciente) {
         try{
             Object response = amqpTemplate.convertSendAndReceive(exchange.getName(), routingkey, idPaciente);
+
             if(response!=null){
-                System.out.println(response);
                 return objectMapper.readValue(response.toString(), Paciente.class);
             }
             else{
                 return null;
             }
+
         } catch (Exception e) {
+            System.out.println("Exception: " + e.toString());
             return null;
         }
     }
