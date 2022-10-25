@@ -48,6 +48,7 @@ public class ConsumerServiceImpl implements ConsumerService {
             try {
                 return obj.writeValueAsString("Error: El id del paciente no es un UUID válido");
             } catch (JsonProcessingException ex) {
+                System.out.println(e.toString());
                 return null;
             }
         }
